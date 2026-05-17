@@ -1,0 +1,8 @@
+{
+  "name": "Dhebs' calculator",
+  "description": "A specialized local calculator for Philippine sales invoices, VAT, 2307 forms, and lumber material retail prices.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
