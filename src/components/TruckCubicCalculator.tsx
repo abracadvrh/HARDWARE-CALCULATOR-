@@ -256,38 +256,38 @@ export default function TruckCubicCalculator({ layoutMode = 'scroll', onAddHisto
             </div>
           </div>
 
-          {/* HIGHLIGHTED VOLUME RESULT TAB (WITH MUCH BIGGER FONT SIZE DEFINED) */}
-          <div className={`relative overflow-hidden rounded-2xl border text-center transition-all ${
+          {/* HIGHLIGHTED VOLUME RESULT TAB (WITH DARK HIGH-CONTRAST BACKGROUND) */}
+          <div className={`relative overflow-hidden rounded-2xl border-2 text-center transition-all bg-stone-950 dark:bg-black border-yellow-400/60 shadow-lg ${
             layoutMode === 'scroll'
-              ? 'p-4.5 shadow-md shadow-yellow-250/30 dark:shadow-[0_0_16px_rgba(250,204,21,0.15)] bg-gradient-to-br from-yellow-400 to-yellow-455 dark:from-yellow-405 dark:to-yellow-500 border-yellow-300 dark:border-yellow-450/70 text-yellow-955'
-              : 'p-3.5 rounded-xl bg-yellow-400 dark:bg-yellow-405 border-yellow-300 dark:border-yellow-405 text-yellow-955 shadow-sm'
+              ? 'p-4.5'
+              : 'p-3.5 rounded-xl'
           }`}>
             {/* Backdrop watermark */}
-            <div className="absolute right-3 bottom-0 pointer-events-none opacity-[0.05] select-none translate-y-[20%]">
+            <div className="absolute right-3 bottom-0 pointer-events-none opacity-[0.12] select-none translate-y-[20%] text-yellow-400">
               <Truck size={90} className="stroke-[1]" />
             </div>
 
-            <p className={`font-black uppercase tracking-[0.25em] mb-1 text-yellow-950 dark:text-stone-900 ${
+            <p className={`font-black uppercase tracking-[0.25em] mb-1 text-yellow-400 ${
               layoutMode === 'scroll' ? 'text-[10px]' : 'text-[9.5px]'
             }`}>
               ⚡ CALCULATED BED VOLUME ⚡
             </p>
 
             <div className="flex flex-col items-center justify-center gap-0.5">
-              <div className="text-white dark:text-stone-900 leading-none text-center">
-                <span className={`font-black tracking-tighter block ${
+              <div className="text-yellow-400 leading-none text-center">
+                <span className={`font-mono font-black tracking-tighter block text-yellow-400 ${
                   layoutMode === 'scroll' ? 'text-4xl xs:text-5xl sm:text-6xl py-0.5' : 'text-3xl xs:text-4xl py-0.5'
                 }`}>
                   {calculatedCbm.toFixed(3)}
                 </span>
-                <span className={`inline-block font-black uppercase tracking-widest opacity-95 ${
+                <span className={`inline-block font-black uppercase tracking-widest text-yellow-300/90 ${
                   layoutMode === 'scroll' ? 'text-[10px] sm:text-xs' : 'text-[9.5px]'
                 }`}>
                   CBM (m³)
                 </span>
               </div>
 
-              <div className={`mt-1.5 py-1 px-3 rounded-lg bg-white/20 dark:bg-stone-910/20 text-white dark:text-stone-900 font-extrabold font-mono tracking-wide ${
+              <div className={`mt-1.5 py-1 px-3 rounded-lg bg-white/10 text-yellow-100 font-extrabold font-mono tracking-wide ${
                 layoutMode === 'scroll' ? 'text-xs' : 'text-[11px]'
               }`}>
                 {calculatedCuFt.toFixed(1)} CU.FT Equivalent
@@ -297,26 +297,27 @@ export default function TruckCubicCalculator({ layoutMode = 'scroll', onAddHisto
               <button
                 onClick={() => handleCopy(`${calculatedCbm.toFixed(3)} CBM (${calculatedCuFt.toFixed(1)} CU.FT) from L=${length}, W=${width}, D=${depth} ${unit}`, 'dim-copy')}
                 type="button"
-                className={`mt-2.5 rounded-lg font-bold uppercase flex items-center justify-center gap-1 transition-all active:scale-95 ${
+                className={`mt-2.5 rounded-lg font-black uppercase flex items-center justify-center gap-1 transition-all active:scale-95 mx-auto ${
                   layoutMode === 'scroll'
-                    ? 'p-1.5 px-4 text-[10px] bg-white text-yellow-955 shadow-xs hover:bg-yellow-50'
-                    : 'p-1 px-3 text-[9.5px] bg-white text-yellow-955 hover:bg-yellow-50 shadow-xs'
+                    ? 'p-1.5 px-4 text-[10px] bg-yellow-400 hover:bg-yellow-350 text-stone-950 shadow-xs'
+                    : 'p-1 px-3 text-[9.5px] bg-yellow-400 hover:bg-yellow-350 text-stone-950 shadow-xs'
                 }`}
               >
                 {copiedKey === 'dim-copy' ? (
                   <>
-                    <Check size={layoutMode === 'scroll' ? 12 : 10} className="text-green-600 stroke-[3]" />
-                    <span className="text-green-600 font-extrabold">Copied Specs!</span>
+                    <Check size={layoutMode === 'scroll' ? 12 : 10} className="text-emerald-800 stroke-[3]" />
+                    <span className="text-emerald-900 font-black">Copied Specs!</span>
                   </>
                 ) : (
                   <>
-                    <Copy size={layoutMode === 'scroll' ? 11 : 9.5} className="text-yellow-955" />
+                    <Copy size={layoutMode === 'scroll' ? 11 : 9.5} className="text-stone-950" />
                     <span>Copy Volume Specs</span>
                   </>
                 )}
               </button>
-            </div>
-          </div>      ) : (
+          </div>
+        </div>
+      ) : (
         /* SECTION 2: STREAMLINED AGGREGATE PRICE CALCULATOR */
         <div className="space-y-4 animate-[fadeIn_0.15s_ease-out]">
           <div className="flex items-center gap-2 border-b border-yellow-101 dark:border-stone-800 pb-2">
